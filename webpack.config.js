@@ -1,16 +1,16 @@
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const GasPlugin = require('gas-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const dayjs = require('dayjs');
+const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const GasPlugin = require('gas-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const dayjs = require('dayjs')
 
-const destination = 'dist';
-const mode = 'none'; // or production
+const destination = 'dist'
+const mode = 'none' // or production
 const getFileName = () => {
-  const dt = dayjs().format('MMM-DD-HHmm');
-  return `code-${dt}.js`;
-};
+  const dt = dayjs().format('MMM-DD-HHmm')
+  return `code-${dt}.js`
+}
 
 module.exports = {
   mode,
@@ -29,11 +29,11 @@ module.exports = {
       new UglifyJSPlugin({
         uglifyOptions: {
           ie8: true,
-          warnings: false,
+          // warnings: false,
           mangle: false,
           compress: {
             properties: false,
-            warnings: false,
+            // warnings: false,
             drop_console: false
           },
           output: {
@@ -79,4 +79,4 @@ module.exports = {
     ]),
     new GasPlugin()
   ]
-};
+}
