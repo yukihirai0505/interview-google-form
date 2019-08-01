@@ -1,3 +1,4 @@
-global.myFunction = () => {
-  Logger.log('Hello world')
+global.createBlogPost = e => {
+  const itemResponses = e.response.getItemResponses()
+  Logger.log(itemResponses)
 }
