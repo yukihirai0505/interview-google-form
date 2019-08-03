@@ -30,7 +30,13 @@ const pushFile = (message, content, path) => {
 
 const uploadFile = (postId, content) => {
   const message = `Add a new article for postId: ${postId}`
-  pushFile(message, content, `src/pages/blog/${postId}.md`)
+  pushFile(
+    message,
+    Utilities.newBlob('')
+      .setDataFromString(content, 'UTF-8')
+      .getDataAsString('UTF-8'),
+    `src/pages/blog/${postId}.md`
+  )
 }
 
 const uploadImage = (fileId, postId) => {
@@ -39,6 +45,7 @@ const uploadImage = (fileId, postId) => {
   const content = file.getBlob().getBytes()
   const path = `/img/${postId}/${Date.now()}_${file.getName()}`
   pushFile(message, content, `static${path}`)
+  file.setTrashed(true)
   return path
 }
 
