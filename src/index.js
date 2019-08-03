@@ -34,7 +34,7 @@ const uploadFile = (postId, content) => {
     message,
     Utilities.newBlob('')
       .setDataFromString(content, 'UTF-8')
-      .getDataAsString('UTF-8'),
+      .getBytes(),
     `src/pages/blog/${postId}.md`
   )
 }
