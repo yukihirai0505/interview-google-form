@@ -84,7 +84,10 @@ function createIndividualDeveloperContents(questionNum, contents, question, answ
     case 'なぜそのようなサービスを作られたのですか？':
     case 'このサービスのイチオシポイントはどこですか？':
     case '最後に今後の意気込みをお願いします！':
-      return { question, answer }
+      return {
+        question: question.replace(/\n/g, '\\n'),
+        answer: answer.replace(/\n/g, '\\n')
+      }
     case '画像を差し込む(オプション)': {
       const content = contents[questionNum]
       content.imagePath = uploadImage(answer, postId)
