@@ -110,7 +110,7 @@ function createNormalContents(questionNum, contents, question, answer, postId) {
     case '質問④':
     case '質問⑤':
     case '質問⑥':
-      return { question }
+      return { question: answer.replace(/\n/g, '\\n') }
     case '回答①':
     case '回答②':
     case '回答③':
@@ -118,7 +118,7 @@ function createNormalContents(questionNum, contents, question, answer, postId) {
     case '回答⑤':
     case '回答⑥': {
       const content = contents[questionNum]
-      content.answer = answer
+      content.answer = answer.replace(/\n/g, '\\n')
       return content
     }
     case '画像を差し込む(オプション)': {
@@ -183,6 +183,9 @@ global.createBlogPost = e => {
             postId
           )
         } else if (templateType === 'しない(フルカスタム)') {
+          if (question === 'さらに質問と回答を追加する') {
+            return
+          }
           contents[questionNum] = createNormalContents(
             questionNum,
             contents,
