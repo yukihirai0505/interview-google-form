@@ -175,6 +175,9 @@ global.createBlogPost = e => {
             body += `serviceName: ${answer}\n`
             return
           }
+          if (question === 'サービスURL') {
+            body += `serviceURL: ${answer}\n`
+          }
           contents[questionNum] = createIndividualDeveloperContents(
             questionNum,
             contents,
