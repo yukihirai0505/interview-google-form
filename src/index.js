@@ -51,8 +51,6 @@ const uploadImage = (fileId, postId) => {
 
 const createBody = ({ question, answer, postId }) => {
   switch (question) {
-    case '自己紹介':
-      return `selfIntroduction: ${answer}\n`
     case 'タイトル':
       return `title: ${answer}\n`
     case 'サブタイトル':
@@ -80,6 +78,7 @@ const createBody = ({ question, answer, postId }) => {
 
 function createIndividualDeveloperContents(questionNum, contents, question, answer, postId) {
   switch (question) {
+    case 'それではまず簡単な自己紹介からお願いできますでしょうか？':
     case '今回紹介したいのはどういったサービスですか？':
     case 'なぜそのようなサービスを作られたのですか？':
     case 'このサービスのイチオシポイントはどこですか？':
@@ -143,6 +142,7 @@ function createNormalContents(questionNum, contents, question, answer, postId) {
 
 const needToContentCountUp = question => {
   switch (question) {
+    case '今回紹介したいのはどういったサービスですか？':
     case 'なぜそのようなサービスを作られたのですか？':
     case 'このサービスのイチオシポイントはどこですか？':
     case '最後に今後の意気込みをお願いします！':
